@@ -4,6 +4,10 @@ const port = process.env.port || 3000;
 
 app.use(express.json());
 
+const cors = require('cors');
+app.use(cors());
+
+
 app.use((err, req, res, next) => {
     if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
         console.error('Invalid JSON received:', err);
